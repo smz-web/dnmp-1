@@ -54,7 +54,7 @@ services:
         image: redis:5.0-alpine
         hostname: lnmp-redis
         ports:
-            - "63789:63789"
+            - "6379:6379"
         command: redis-server /usr/local/etc/redis/redis.conf    
         networks:
             - backend      
@@ -62,17 +62,7 @@ services:
             - ./etc/redis/redis.conf:/usr/local/etc/redis/redis.conf
             - ./log/redis.log:/data/redis.log
         restart: always
-        container_name: lnmp-redis
-    phpmyadmin:
-        image: phpmyadmin/phpmyadmin:latest
-        ports:
-            - "8082:80"
-        networks:
-            - backend
-        environment:
-            - PMA_HOST=lnmp-mysql
-            - PMA_PORT=3306
-        container_name: lnmp-phpmyadmin    
+        container_name: lnmp-redis  
 networks:
   backend:
     driver: bridge   

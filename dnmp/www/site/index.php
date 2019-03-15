@@ -7,7 +7,7 @@ function testRedis()
     $redis = new \Redis();
     var_dump($redis);
     try {
-        $redis->connect('lnmp-redis', 63789);
+        $redis->connect('lnmp-redis', 6379);
         var_dump($redis->keys("*"));
         var_dump($redis->get("Name"));
     } catch (\Exception $e) {
